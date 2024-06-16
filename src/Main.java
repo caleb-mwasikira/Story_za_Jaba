@@ -1,21 +1,17 @@
-import Shapes.Circle;
-import Shapes.Rectangle;
-import Shapes.Shape;
-import Shapes.Triangle;
-
 import java.util.Scanner;
+import Shapes.*;
 
 public class Main {
     /**
      * Asks the user for input. Input must be a positive double
      */
-    public static double getShapeDimensions(Scanner scanner, String inputMessage) {
-        System.out.print(inputMessage);
-
+    public static double inputDouble(Scanner scanner, String message) {
         double value = 0;
         boolean isValidInput = false;
 
         do {
+            System.out.print(message);
+
             if (scanner.hasNextDouble()) {
                 value = scanner.nextDouble();
                 if (value >= 0) {
@@ -37,11 +33,13 @@ public class Main {
     /**
      * Asks the user for input. Input must be a positive int
      */
-    public static int selectUserChoice(Scanner scanner) {
+    public static int inputInt(Scanner scanner, String message) {
         int value = 0;
         boolean isValidInput = false;
 
         do {
+            System.out.print(message);
+
             if (scanner.hasNextInt()) {
                 value = scanner.nextInt();
                 if (value >= 0) {
@@ -62,7 +60,6 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int choice;
         boolean isExitingProgram = false;
 
         do {
@@ -74,21 +71,21 @@ public class Main {
             System.out.println("3. Triangle");
             System.out.println("4. Exit");
 
-            choice = selectUserChoice(scanner);
+            int choice = inputInt(scanner, "> ");
 
             switch (choice) {
                 case 1:
-                    double radius = getShapeDimensions(scanner, "Enter the radius of the circle: ");
+                    double radius = inputDouble(scanner,"Enter the radius of the circle: ");
                     selectedShape = new Circle(radius);
                     break;
                 case 2:
-                    double length = getShapeDimensions(scanner, "Enter the length of the rectangle: ");
-                    double width = getShapeDimensions(scanner, "Enter the width of the rectangle: ");
+                    double length = inputDouble(scanner,"Enter the length of the rectangle: ");
+                    double width = inputDouble(scanner,"Enter the width of the rectangle: ");
                     selectedShape = new Rectangle(length, width);
                     break;
                 case 3:
-                    double base = getShapeDimensions(scanner, "Enter the base of the triangle: ");
-                    double height = getShapeDimensions(scanner, "Enter the height of the triangle: ");
+                    double base = inputDouble(scanner,"Enter the base of the triangle: ");
+                    double height = inputDouble(scanner,"Enter the height of the triangle: ");
                     selectedShape = new Triangle(base, height);
                     break;
                 case 4:

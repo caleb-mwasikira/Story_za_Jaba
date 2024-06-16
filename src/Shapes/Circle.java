@@ -20,6 +20,6 @@ public class Circle implements Shape {
     @Override
     public void draw() {
         System.out.println("Drawing circle of radius: " + this.radius);
-        System.out.println("\n\n");
+        System.out.println();
     }
 }

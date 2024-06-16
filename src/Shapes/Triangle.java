@@ -28,8 +28,8 @@ public class Triangle implements Shape {
     public void draw() {
         System.out.println("Drawing a triangle with base " + this.base + ", height " + this.height);
 
-        for (int i = 1; i <= height; i++) {
-            for (int j = 1; j <= height - i; j++) {
+        for (int i = 1; i <= this.height; i++) {
+            for (int j = 1; j <= this.height - i; j++) {
                 System.out.print(" ");
             }
             for (int j = 1; j <= 2 * i - 1; j++) {
@@ -38,6 +38,6 @@ public class Triangle implements Shape {
             System.out.println();
         }
 
-        System.out.println("\n\n");
+        System.out.println();
     }
 }

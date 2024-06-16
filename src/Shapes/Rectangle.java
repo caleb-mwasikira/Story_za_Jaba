@@ -30,6 +30,6 @@ public class Rectangle implements Shape {
             System.out.println();
         }
 
-        System.out.println("\n\n");
+        System.out.println();
     }
 }
