@@ -1,17 +1,32 @@
-import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
+/*
+This program displays the contents of a text file
+ */
 public class Main {
-    public static void main(String[] args) throws IOException {
-        String line;
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter lines of text, 'stop' to quit");
+    public static void main(String[] args) {
+        String filename = "/home/netrunner/Downloads/banana.txt";
+        StringBuilder contents = new StringBuilder();
 
-        do {
-            line = br.readLine();
-            System.out.println(line);
-        } while (!line.trim().equals("stop"));
+        try {
+            FileInputStream file = new FileInputStream(filename);
+
+            while(true) {
+                int next_byte = file.read();
+                if (next_byte == -1) {
+                    break;
+                }
+
+                contents.append((char) next_byte);
+            }
+
+            System.out.println(contents);
+            file.close();
+        } catch (IOException e) {
+            System.out.printf("error reading file contents; %s\n", e.getMessage());
+            System.exit(1);
+        }
     }
 }
 
